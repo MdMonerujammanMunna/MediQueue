@@ -8,7 +8,7 @@ const DropdownProfile = () => {
         <>
             <Dropdown>
                 <Dropdown.Trigger className="rounded-full">
-                    <Avatar>
+                    <Avatar className="border-2 border-[var(--primary-color)]">
                         <Avatar.Image
                             alt="Junior Garcia"
                             src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg"
