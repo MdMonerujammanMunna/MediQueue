@@ -6,14 +6,14 @@ import { RiInstagramFill } from 'react-icons/ri';
 const Footersection = () => {
     const AfterLogin =
         <>
-            <li><Link href="#" className="no-underline">Add Tutor</Link></li>
-            <li><Link href="#" className="no-underline">My Tutors</Link></li>
-            <li><Link href="#" className="no-underline">My Booked Sessions</Link></li>
+            <li><Link href="#" className="no-underline hover:text-[var(--primary-color)] ">Add Tutor</Link></li>
+            <li><Link href="#" className="no-underline hover:text-[var(--primary-color)] ">My Tutors</Link></li>
+            <li><Link href="#" className="no-underline hover:text-[var(--primary-color)] ">My Booked Sessions</Link></li>
         </>
     const Navigation =
         <>
-            <li><Link href="#" className="no-underline">Home</Link></li>
-            <li><Link href="#" className="no-underline"> Tutors </Link></li>
+            <li><Link href="#" className="no-underline hover:text-[var(--primary-color)] ">Home</Link></li>
+            <li><Link href="#" className="no-underline hover:text-[var(--primary-color)] "> Tutors </Link></li>
 
             {
                 // <>  </>                         {/*before log in */}
@@ -25,16 +25,16 @@ const Footersection = () => {
         </>
     const Support =
         <>
-            <li><Link href="/">Help Center</Link></li>
-            <li><Link href="/All_tiles">FAQ</Link></li>
-            <li><Link href="/Profile">Terms & Conditions</Link></li>
-            <li><Link href="/Profile">Privacy Policy</Link></li>
+            <li><Link href="/" className='hover:text-[var(--primary-color)]'>Help Center</Link></li>
+            <li><Link href="/All_tiles" className='hover:text-[var(--primary-color)]'>FAQ</Link></li>
+            <li><Link href="/Profile" className='hover:text-[var(--primary-color)]'>Terms & Conditions</Link></li>
+            <li><Link href="/Profile" className='hover:text-[var(--primary-color)]'>Privacy Policy</Link></li>
         </>
     const Info =
         <>
-            <p>01751626072</p>
-            <p>mdmonerujammanmunna@gmail.com</p>
-            <p>Rangpur,Bangladesh</p>
+            <p className='hover:text-[var(--primary-color)]'>01751626072</p>
+            <p className='hover:text-[var(--primary-color)]'>mdmonerujammanmunna@gmail.com</p>
+            <p className='hover:text-[var(--primary-color)]'>Rangpur,Bangladesh</p>
         </>
     const link =
         <>
@@ -56,7 +56,7 @@ const Footersection = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col lg:flex-row lg:text-left text-center items-center lg:items-start lg:gap-5 justify-between">
+                    <div className="flex flex-col lg:flex-row lg:text-left text-center items-center lg:items-start  lg:gap-10 justify-between">
                         <div className="">
                             <p className='font-bold text-[var(--primary-color)] mb-2'>Quick Links</p>
                             <ul className=''>

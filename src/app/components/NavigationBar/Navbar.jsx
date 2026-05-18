@@ -2,20 +2,23 @@
 
 import { useState } from "react";
 import { Link, Button } from "@heroui/react";
-import { ToggleButton } from "./ToggleButton";
-import DropdownProfile from "./DropdownProfile";
+import { usePathname } from "next/navigation";
+import DropdownProfile from "../ProfileDropDown/DropdownProfile";
+import { ToggleButton } from "../ToggleButton";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathName = usePathname()
+    // console.log(pathName)
     const AfterLogin =
         <>
-            <li><Link href="#" className="no-underline">Add Tutor</Link></li>
-            <li><Link href="#" className="no-underline">My Tutors</Link></li>
-            <li><Link href="#" className="no-underline">My Booked Sessions</Link></li>
+            <li><Link href="/AddToutorPage" className={`${pathName === "/AddToutorPage" ? "text-[var(--primary-color)]" : ""} no-underline`}>Add Tutor</Link></li>
+            <li><Link href="/My_Tutors" className={`${pathName === "/My_Tutors" ? "text-[var(--primary-color)]" : ""} no-underline`}>My Tutors</Link></li>
+            <li><Link href="/My_BookedSessions" className={`${pathName === "/My_BookedSessions" ? "text-[var(--primary-color)]" : ""} no-underline`}>My Booked Sessions</Link></li>
         </>
     const ButtonMid = <>
-        <li><Link href="#" className="no-underline">Home</Link></li>
-        <li><Link href="#" className="font-medium no-underline"> Tutors </Link></li>
+        <li><Link href="/" className={`${pathName === "/" ? "text-[var(--primary-color)]" : ""} no-underline`}>Home</Link></li>
+        <li><Link href="/Tutors" className={`${pathName === "/Tutors" ? "text-[var(--primary-color)]" : ""} no-underline`}> Tutors </Link></li>
 
         {
             // <>  </>                         {/*before log in */}
@@ -28,7 +31,7 @@ export default function Navbar() {
     </>
 
     return (
-        <nav className="sticky top-0 z-40 border-b border-separator bg-background/70 backdrop-blur-lg">
+        <nav className="sticky top-0 z-40 border-b border-b-4 border-[var(--primary-color)] bg-background/70 backdrop-blur-lg">
             <header className="mx-auto flex h-16 items-center justify-between px-10">
                 <div className="flex items-center gap-4">
                     <button
@@ -70,8 +73,8 @@ export default function Navbar() {
                 </ul>
                 <div className=" items-center gap-4 flex">
                     {<>
-                        <Link href="#" className="no-underline">Login</Link>
-                        <Button className={"bg-[var(--primary-color)]"}>Sign Up</Button> {/* before log in show */}
+                        <Link href="/LogIn" className={`${pathName === "/LogIn" ? "text-[var(--primary-color)]" : ""} no-underline`}>Login</Link>
+                        <Link href="/SignUp" className={"no-underline"}> <Button className="bg-[var(--primary-color)]">Sign Up</Button></Link> {/* before log in show */}
                     </>}
 
                     {<DropdownProfile />} {/* After log in show  */}
