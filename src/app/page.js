@@ -1,7 +1,9 @@
 import FAQSection from "./components/FAQ/FAQ";
 import Hero from "./components/HeroBanner/Hero";
-import PlatformStats from "./components/Status/Statuse";
-import PlatformFeatures from "./components/ValuePropositions/ValuePropositions";
+import MarqueText from "./components/MarqureText/MarqueText";
+import Statuse from "./components/Status/Statuse";
+import ValuePropositions from "./components/ValuePropositions/ValuePropositions";
+
 
 
 export default function Home() {
@@ -11,9 +13,10 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <PlatformStats />
+      <Statuse></Statuse>
+      <MarqueText></MarqueText>
       <FAQSection></FAQSection>
-      <PlatformFeatures />
+      <ValuePropositions></ValuePropositions>
     </>
 
 

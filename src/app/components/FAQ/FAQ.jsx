@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 
-export default function ClickableFAQ() {
+export default function FAQSection() {
     const [openIndex, setOpenIndex] = useState(null);
     const faqData = [
         {

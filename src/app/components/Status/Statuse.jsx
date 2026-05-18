@@ -1,7 +1,6 @@
 import React from "react";
 
-export default function PlatformStats() {
-    // টিউটর বুকিং প্ল্যাটফর্মের রিয়েল-টাইম পরিসংখ্যান
+export default function Statuse() {
     const statsData = [
         { number: "500+", label: "Verified Tutors" },
         { number: "12,000+", label: "Successful Classes" },
