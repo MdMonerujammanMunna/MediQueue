@@ -1,3 +1,4 @@
+
 import FAQSection from "./components/FAQ/FAQ";
 import Hero from "./components/HeroBanner/Hero";
 import MarqueText from "./components/MarqureText/MarqueText";

@@ -1,11 +1,219 @@
-import React from 'react';
+"use client";
+import {
+    Button,
+    FieldError,
+    Fieldset,
+    Form,
+    Input,
+    Label,
+    Surface,
+    Select,
+    ListBox,
+    TextArea,
+    TextField,
+} from "@heroui/react";
 
-const Add_Tutor = () => {
+const localhost = process.env.LOCAL_HOST;
+export default function AddToutorPage() {
+    const OnsubmitHandele = async (e) => {
+        e.preventDefault();
+        const fromdata = new FormData(e.currentTarget)
+        const user = Object.fromEntries(fromdata.entries())
+        const result = await fetch("http://localhost:5000/AddTutors", {
+            method: "POST",
+            headers: {
+                'content-type': "application/json"
+            },
+            body: JSON.stringify(user)
+        })
+    }
+
     return (
-        <div>
-            hi hi hi
-        </div>
-    );
-};
+        <>
+            <div className="max-w-5xl px-10 py-10 my-20 mx-auto flex items-center justify-center rounded-3xl bg-surface p-6">
+                <Surface className="w-full">
+                    <h1 className="text-center text-5xl font-bold text-[var(--primary-color)] mb-5">Add Tutors</h1>
+                    <Form onSubmit={OnsubmitHandele}>
+                        <Fieldset className="w-full">
+                            <Fieldset.Group>
 
-export default Add_Tutor;
+                                {/* Name section */}
+                                <TextField
+                                    isRequired
+                                    name="name"
+                                >
+                                    <Label>Tutor Name</Label>
+                                    <Input placeholder="Tutor Name" variant="secondary" />
+                                    <FieldError />
+                                </TextField>
+
+                                {/* photo section */}
+                                <TextField isRequired name="Photo" type="url">
+                                    <Label>Photo URL</Label>
+                                    <Input placeholder="Photo URL" variant="secondary" />
+                                    <FieldError />
+                                </TextField>
+
+                                {/* Times section */}
+                                <TextField
+                                    isRequired
+                                    name="Times"
+                                >
+                                    <Label>Available Days and Available time slot</Label>
+                                    <Input placeholder=" Sun - Thu 5:00 PM - 8:00 PM" variant="secondary" type="text" />
+                                    <FieldError />
+                                </TextField>
+
+                                {/* Fee & Slot section */}
+                                <div className="flex items-center gap-5">
+                                    {/* Fee section */}
+                                    <TextField className={"flex-1"} isRequired name="Fee" type="number">
+                                        <Label>Hourly fee</Label>
+                                        <Input placeholder="$75" variant="secondary" type="number" />
+                                        <FieldError />
+                                    </TextField>
+                                    {/* Slot section*/}
+                                    <TextField className={"flex-1"} isRequired name="Slot" type="number">
+                                        <Label>Total slot</Label>
+                                        <Input placeholder="100" variant="secondary" type="number" />
+                                        <FieldError />
+                                    </TextField>
+                                </div>
+
+                                {/* SessionDate section */}
+                                <div className="">
+                                    <TextField name="SessionDate" type="date" isRequired>
+                                        <Label>Session Start Date</Label>
+                                        <Input type="date" className="rounded-2xl" variant="secondary" />
+                                        <FieldError />
+                                    </TextField>
+                                </div>
+
+                                {/* Subject section */}
+                                <div>
+                                    <Select
+                                        name="Subject"
+                                        isRequired
+                                        className="w-full"
+                                        placeholder="Select Subject"
+                                        variant="secondary"
+                                    >
+                                        <Label>Subject / Category</Label>
+                                        <Select.Trigger className="rounded-2xl" >
+                                            <Select.Value />
+                                            <Select.Indicator />
+                                        </Select.Trigger>
+                                        <Select.Popover>
+                                            <ListBox>
+                                                <ListBox.Item id="Bangla" textValue="Bangla">
+                                                    Bangl
+                                                    <ListBox.ItemIndicator />
+                                                </ListBox.Item>
+                                                <ListBox.Item id="English" textValue="English">
+                                                    Englis
+                                                    <ListBox.ItemIndicator />
+                                                </ListBox.Item>
+                                                <ListBox.Item id="Mathematics" textValue="Mathematics">
+                                                    Mathematics
+                                                    <ListBox.ItemIndicator />
+                                                </ListBox.Item>
+                                                <ListBox.Item id="ICT" textValue="ICT">
+                                                    ICT
+                                                    <ListBox.ItemIndicator />
+                                                </ListBox.Item>
+                                                <ListBox.Item id="Physics" textValue="Physics">
+                                                    Physics
+                                                    <ListBox.ItemIndicator />
+                                                </ListBox.Item>
+                                                <ListBox.Item id="Chemistry" textValue="Chemistry">
+                                                    Chemistry
+                                                    <ListBox.ItemIndicator />
+                                                </ListBox.Item>
+                                                <ListBox.Item id="Biology" textValue="Biology">
+                                                    Biology
+                                                    <ListBox.ItemIndicator />
+                                                </ListBox.Item>
+                                            </ListBox>
+                                        </Select.Popover>
+                                    </Select>
+                                </div>
+
+                                {/* Institution section */}
+                                <TextField
+                                    isRequired
+                                    name="Institution"
+                                >
+                                    <Label>Institution Name</Label>
+                                    <Input placeholder="Dahaka something" variant="secondary" />
+                                    <FieldError />
+                                </TextField>
+
+                                {/* Experience section */}
+                                <TextField
+                                    isRequired
+                                    name="Experience"
+                                >
+                                    <Label>Experience</Label>
+                                    <TextArea placeholder="3 years Experience" variant="secondary" />
+                                    <FieldError />
+                                </TextField>
+
+                                {/* Location section */}
+                                <TextField
+                                    isRequired
+                                    name="Location"
+                                >
+                                    <Label>Location (Area/City)</Label>
+                                    <Input placeholder="Rangpur" variant="secondary" />
+                                    <FieldError />
+                                </TextField>
+
+                                {/* Teaching section */}
+                                <div>
+                                    <Select
+                                        name="Teaching"
+                                        isRequired
+                                        className="w-full"
+                                        placeholder="Select Teaching Mode"
+                                        variant="secondary"
+                                    >
+                                        <Label>Teaching Mode</Label>
+                                        <Select.Trigger className="rounded-2xl" >
+                                            <Select.Value />
+                                            <Select.Indicator />
+                                        </Select.Trigger>
+                                        <Select.Popover>
+                                            <ListBox>
+                                                <ListBox.Item id="Online" textValue="Online">
+                                                    Online
+                                                    <ListBox.ItemIndicator />
+                                                </ListBox.Item>
+                                                <ListBox.Item id="Offline" textValue="Offline">
+                                                    Offline
+                                                    <ListBox.ItemIndicator />
+                                                </ListBox.Item>
+                                                <ListBox.Item id="Both" textValue="Both">
+                                                    Both
+                                                    <ListBox.ItemIndicator />
+                                                </ListBox.Item>
+                                            </ListBox>
+                                        </Select.Popover>
+                                    </Select>
+                                </div>
+
+                            </Fieldset.Group>
+                            <Fieldset.Actions className="grid grid-cols-5">
+                                <Button type="submit" className={"col-span-4 w-full bg-[var(--primary-color)]"}>
+                                    Add Tutors
+                                </Button>
+                                <Button type="reset" variant="tertiary" className={"w-full"}>
+                                    Cancel
+                                </Button>
+                            </Fieldset.Actions>
+                        </Fieldset>
+                    </Form>
+                </Surface>
+            </div>
+        </>
+    );
+}

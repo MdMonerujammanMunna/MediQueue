@@ -5,6 +5,7 @@ import { Link, Button } from "@heroui/react";
 import { usePathname } from "next/navigation";
 import DropdownProfile from "../ProfileDropDown/DropdownProfile";
 import { ToggleButton } from "../ToggleButton";
+import { Providers } from "@/Provider/ThemeToggle";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +19,7 @@ export default function Navbar() {
         </>
     const ButtonMid = <>
         <li><Link href="/" className={`${pathName === "/" ? "text-[var(--primary-color)]" : ""} no-underline`}>Home</Link></li>
-        <li><Link href="/Tutors" className={`${pathName === "/Tutors" ? "text-[var(--primary-color)]" : ""} no-underline`}> Tutors </Link></li>
+        <li><Link href="/AllTutorPage" className={`${pathName === "/Tutors" ? "text-[var(--primary-color)]" : ""} no-underline`}> Tutors </Link></li>
 
         {
             // <>  </>                         {/*before log in */}
@@ -78,8 +79,9 @@ export default function Navbar() {
                     </>}
 
                     {<DropdownProfile />} {/* After log in show  */}
-
-                    <ToggleButton />
+                    {/* <Providers>
+                        <ToggleButton />
+                    </Providers> */}
                 </div>
             </header>
             {isMenuOpen && (

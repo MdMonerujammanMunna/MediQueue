@@ -1,8 +1,10 @@
+const dns = require("node:dns");
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 
-import { Providers } from "@/Provider/ThemeToggle";
 import Navbar from "./components/NavigationBar/Navbar";
 import Footersection from "./components/Footer/Footer";
 
@@ -29,9 +31,9 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground container mx-auto">
-        <Providers>
-          <Navbar></Navbar>
-        </Providers>
+      
+        <Navbar></Navbar>
+       
         <main> {children} </main>
         <Footersection />
       </body>
