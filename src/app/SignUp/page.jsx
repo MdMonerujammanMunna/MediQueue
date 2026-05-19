@@ -10,10 +10,8 @@ import { toast } from 'react-toastify';
 
 const SignUp = () => {
     const [Error, setError] = useState("");
-    // Password
     const SubmitFromtogo = async (e) => {
         e.preventDefault()
-        // log in
         const password = e.target.Password.value;
         if (!/[A-Z]/.test(password)) {
             return setError("Must have an uppercase letter");
@@ -130,7 +128,7 @@ const SignUp = () => {
                     </Button>
 
                     <div className="text-[18px] text-[#6C696D] text-center mt-5">
-                        <p>Already have an account? <Link href="/LoginPage" className='font-semibold text-[var(--primary-color)]'>Sign In</Link></p>
+                        <p>Already have an account? <Link href="/LogIn" className='font-semibold text-[var(--primary-color)]'>Sign In</Link></p>
                     </div>
                 </Card>
 

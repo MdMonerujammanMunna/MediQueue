@@ -39,7 +39,7 @@ const DetailsPage = async ({ params }) => {
                         <p className="font-bold">Remaining Slots: <span className="font-normal"> {slot}</span></p>
                         <p className="font-bold">Session Start Date: <span className="font-normal"> {SessionDate}</span> </p>
 
-                        <BookingModal></BookingModal>
+                        <BookingModal name={name}></BookingModal>
 
                     </div>
                 </div>
