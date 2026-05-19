@@ -26,14 +26,14 @@ const CardPage = ({ item }) => {
                     <p className="text-xl text-gray-500 mt-2">
                         {Subject}
                     </p>
-                    <p className="text-xl  mt-2">
+                    <p className="text-xl  mt-2 text-gray-800">
                         Available: <span>{Times}</span>
                     </p>
-                    <p className="text-xl  mt-2">
+                    <p className="text-xl  mt-2 text-gray-800">
                         Session Start Date: <span>{SessionDate}</span>
                     </p>
 
-                    <div className=" space-y-6 mt-4">
+                    <div className=" space-y-6 mt-4 text-gray-800">
                         <div className="font-bold ">
                             <p>Fee: <span>${Fee}/hr</span></p>
                         </div>

@@ -3,13 +3,33 @@ import { authClient } from '@/lib/auth-client';
 import { Button, Card, FieldError, Input, Label, TextField } from '@heroui/react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { toast } from 'react-toastify';
 
 
 const SignUp = () => {
-
+    const [Error, setError] = useState("");
+    // Password
     const SubmitFromtogo = async (e) => {
         e.preventDefault()
+        // log in
+        const password = e.target.Password.value;
+        if (!/[A-Z]/.test(password)) {
+            return setError("Must have an uppercase letter");
+        }
+
+        if (!/[a-z]/.test(password)) {
+            return setError("Must have a lowercase letter");
+        }
+
+        if (password.length < 6) {
+            return setError("Password must be at least 6 characters");
+        }
+
+        setError("");
+
+        // log in
         const dataGet = new FormData(e.currentTarget)
         const userData = Object.fromEntries(dataGet.entries())
         const { data, error } = await authClient.signUp.email({
@@ -18,14 +38,31 @@ const SignUp = () => {
             image: userData.image,
             password: userData.Password,
         });
-        console.log({ data })
         if (data) {
-            alert(` ${userData.Name}`)
-            // redirect('/LogIn');
+            toast.success(`Account Created Successfully ${userData.Name}`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            redirect('/LogIn');
         }
         else if (error) {
-            alert(` ${error.message}`)
-        } j
+            toast.error(`Account Created Failed ${error.message}`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        }
     }
     const signIn = async () => {
         const data = await authClient.signIn.social({
@@ -66,6 +103,11 @@ const SignUp = () => {
                         <TextField name="Password" isRequired className={"space-y-2"}>
                             <Label className='text-[18px]'>Password</Label>
                             <Input type='password' placeholder="password" className="rounded-xl py-3 px-5 text-[18px]" variant="secondary" />
+                            {Error && (
+                                <p className="text-red-500 text-sm font-medium">
+                                    {Error}
+                                </p>
+                            )}
                             <FieldError />
                         </TextField>
                         {/* button */}

@@ -3,6 +3,7 @@ import { authClient } from '@/lib/auth-client';
 import { FieldError, Input, Label, TextField, Button, Card } from '@heroui/react';
 import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
+import { toast } from 'react-toastify';
 
 const LogIn = () => {
     const SubmitFrom = async (e) => {
@@ -15,10 +16,29 @@ const LogIn = () => {
             callbackURL: "/"
         });
         if (data) {
-            alert(` ${userData.Email}`)
+            toast.success(`Log In Successfully ${userData.Name}`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            redirect('/LogIn');
         }
         else if (error) {
-            alert(` ${error.message}`)
+            toast.error(`Log in Failed ${error.message}`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
         }
     }
     const signIn = async () => {

@@ -15,7 +15,7 @@ const DropdownProfile = ({ user }) => {
                             alt="Junior Garcia"
                             src={image}
                         />
-                        <Avatar.Fallback delayMs={600}>JD</Avatar.Fallback>
+                        <Avatar.Fallback delayMs={600}>{name?.charAt(0)}</Avatar.Fallback>
                     </Avatar>
                 </Dropdown.Trigger>
                 <Dropdown.Popover className={"rounded-none"}>
