@@ -15,12 +15,13 @@ const SignUp = () => {
         const { data, error } = await authClient.signUp.email({
             name: userData.Name,
             email: userData.Email,
-            photo: userData.Photo,
+            image: userData.image,
             password: userData.Password,
         });
+        console.log({ data })
         if (data) {
             alert(` ${userData.Name}`)
-            redirect('/LogIn');
+            // redirect('/LogIn');
         }
         else if (error) {
             alert(` ${error.message}`)
@@ -44,7 +45,7 @@ const SignUp = () => {
                         <div className="">
                             <TextField name="Name" isRequired className={"space-y-2"}>
                                 <Label className='text-[18px]'>Full Name</Label>
-                                <Input type='text' placeholder="Enter your name" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
+                                <Input type='text' placeholder="Enter your name" className="rounded-xl py-3 px-5 text-[18px]" variant="secondary" />
                                 <FieldError />
                             </TextField>
                         </div>
@@ -52,19 +53,19 @@ const SignUp = () => {
                         {/* Email */}
                         <TextField name="Email" isRequired className={"space-y-2"}>
                             <Label className='text-[18px]'>Email Address</Label>
-                            <Input type='email' placeholder="Enter your email" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
+                            <Input type='email' placeholder="Enter your email" className="rounded-xl py-3 px-5 text-[18px]" variant="secondary" />
                             <FieldError />
                         </TextField>
-                        {/* Photo */}
-                        <TextField name="Photo" isRequired className={"space-y-2"}>
-                            <Label className='text-[18px]'>Photo-URL</Label>
-                            <Input type='url' placeholder="Url Here" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
+                        {/* image */}
+                        <TextField isRequired name="image" type="text" className={"space-y-2"}>
+                            <Label className='text-[18px]'>Image URL</Label>
+                            <Input className="py-3 px-5 text-[18px]" variant="secondary" placeholder="Image URL" />
                             <FieldError />
                         </TextField>
                         {/* Password */}
                         <TextField name="Password" isRequired className={"space-y-2"}>
                             <Label className='text-[18px]'>Password</Label>
-                            <Input type='password' placeholder="Confirm your password" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
+                            <Input type='password' placeholder="password" className="rounded-xl py-3 px-5 text-[18px]" variant="secondary" />
                             <FieldError />
                         </TextField>
                         {/* button */}

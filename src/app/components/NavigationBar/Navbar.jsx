@@ -6,11 +6,18 @@ import { usePathname } from "next/navigation";
 import DropdownProfile from "../ProfileDropDown/DropdownProfile";
 import { ToggleButton } from "../ToggleButton";
 import { Providers } from "@/Provider/ThemeToggle";
+import { useSession } from "@/lib/auth-client";
 
 export default function Navbar() {
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const pathName = usePathname()
-    // console.log(pathName)
+
+    const { data, isPending } = useSession()
+    if (isPending) {
+        <h2>Loading...</h2>
+    }
+    const user = data?.user;
     const AfterLogin =
         <>
             <li><Link href="/AddToutorPage" className={`${pathName === "/AddToutorPage" ? "text-[var(--primary-color)]" : ""} no-underline`}>Add Tutor</Link></li>
@@ -19,13 +26,13 @@ export default function Navbar() {
         </>
     const ButtonMid = <>
         <li><Link href="/" className={`${pathName === "/" ? "text-[var(--primary-color)]" : ""} no-underline`}>Home</Link></li>
-        <li><Link href="/AllTutorPage" className={`${pathName === "/Tutors" ? "text-[var(--primary-color)]" : ""} no-underline`}> Tutors </Link></li>
+        <li><Link href="/AllTutorPage" className={`${pathName === "/AllTutorPage" ? "text-[var(--primary-color)]" : ""} no-underline`}> Tutors </Link></li>
 
-        {
-            // <>  </>                         {/*before log in */}
-            // :
+        {user ?
+            <>  {AfterLogin} </>
+            :
             <>
-                {AfterLogin}                  {/* after log in */}
+
             </>
         }
 
@@ -73,15 +80,19 @@ export default function Navbar() {
                     {ButtonMid}
                 </ul>
                 <div className=" items-center gap-4 flex">
-                    {<>
-                        <Link href="/LogIn" className={`${pathName === "/LogIn" ? "text-[var(--primary-color)]" : ""} no-underline`}>Login</Link>
-                        <Link href="/SignUp" className={"no-underline"}> <Button className="bg-[var(--primary-color)]">Sign Up</Button></Link> {/* before log in show */}
-                    </>}
+                    {user ?
+                        <> <DropdownProfile user={user} /></>
+                        :
+                        <>
+                            <Link href="/LogIn" className={`${pathName === "/LogIn" ? "text-[var(--primary-color)]" : ""} no-underline`}>Login</Link>
+                            <Link href="/SignUp" className={"no-underline"}> <Button className="bg-[var(--primary-color)]">Sign Up</Button></Link>
+                        </>
+                    }
 
-                    {<DropdownProfile />} {/* After log in show  */}
-                    {/* <Providers>
+
+                    <Providers>
                         <ToggleButton />
-                    </Providers> */}
+                    </Providers>
                 </div>
             </header>
             {isMenuOpen && (

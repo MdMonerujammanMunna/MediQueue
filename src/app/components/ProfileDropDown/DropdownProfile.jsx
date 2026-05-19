@@ -1,9 +1,11 @@
 import { Avatar, Dropdown, Label } from "@heroui/react";
 import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
 import Link from "next/link";
+import { signOut } from "@/lib/auth-client";
 
 
-const DropdownProfile = () => {
+const DropdownProfile = ({ user }) => {
+    const { name, email, image } = user
     return (
         <>
             <Dropdown>
@@ -11,7 +13,7 @@ const DropdownProfile = () => {
                     <Avatar className="border-2 border-[var(--primary-color)]">
                         <Avatar.Image
                             alt="Junior Garcia"
-                            src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg"
+                            src={image}
                         />
                         <Avatar.Fallback delayMs={600}>JD</Avatar.Fallback>
                     </Avatar>
@@ -19,16 +21,16 @@ const DropdownProfile = () => {
                 <Dropdown.Popover className={"rounded-none"}>
                     <div className="px-3 pt-3 pb-1">
                         <Link href="/" className="flex flex-col gap-0">
-                            <p className="text-sm leading-5 font-medium">Jane Doe</p>
-                            <p className="text-xs leading-none text-muted">jane@example.com</p>
+                            <p className="text-sm leading-5 font-medium">{name}</p>
+                            <p className="text-xs leading-none text-muted">{email}</p>
                         </Link>
                     </div>
                     <Dropdown.Menu>
                         <Dropdown.Item id="logout" textValue="Logout" variant="danger">
-                            <div className="flex w-full items-center justify-between gap-2">
+                            <button onClick={() => signOut()} className="flex w-full items-center justify-between gap-2">
                                 <Label>Log Out</Label>
                                 <ArrowRightFromSquare className="size-3.5 text-danger" />
-                            </div>
+                            </button>
                         </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown.Popover>
