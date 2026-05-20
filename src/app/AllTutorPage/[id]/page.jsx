@@ -1,12 +1,21 @@
 import { BookingModal } from "@/app/components/BookingModal/Modal";
+import { auth } from "@/lib/auth";
 import { Button, Card } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
 
 
 
 const DetailsPage = async ({ params }) => {
     const { id } = await params
-    const data = await fetch(`http://localhost:5000/AllTutorPage/${id}`)
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/AllTutorPage/${id}`, {
+        headers: {
+            authorization: `Brerr ${token}`
+        }
+    })
     const results = await data.json()
 
     const { _id, name, Photo, Subject, Times, SessionDate, Fee, slot, Experience, Location, Institution, Teaching } = results

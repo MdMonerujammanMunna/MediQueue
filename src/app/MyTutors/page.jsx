@@ -4,7 +4,6 @@ import { Table } from "@heroui/react";
 import { headers } from "next/headers";
 import TableData from "../components/TableData/TableData";
 import TableforMy from "../components/TableforMy/TableforMy";
-// import { authClient } from "@/lib/auth-client"
 
 
 const MyTutors = async () => {
@@ -13,11 +12,12 @@ const MyTutors = async () => {
         headers: await headers()
     })
     const { id } = session?.user
-    const data = await fetch("http://localhost:5000/myMaked", {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/myMaked`, {
         method: "GET",
         headers: {
             'content-type': "application/json",
-            'UserValidID': id
+            'UserValidID': id,
+            authorization: `Brerr ${token}`
         }
     })
     const results = await data.json()

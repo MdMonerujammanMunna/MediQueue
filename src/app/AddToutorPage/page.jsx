@@ -1,5 +1,5 @@
 "use client";
-import { useSession } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import {
     Button,
     FieldError,
@@ -21,6 +21,7 @@ export default function AddToutorPage() {
     }
     const usero = data?.user;
     const OnsubmitHandele = async (e) => {
+        const { token } = authClient.token()
         e.preventDefault();
         const fromdata = new FormData(e.currentTarget)
         const user = Object.fromEntries(fromdata.entries())
@@ -40,10 +41,11 @@ export default function AddToutorPage() {
         }
 
         console.log(Submit)
-        const result = await fetch("http://localhost:5000/AddTutors", {
+        const result = await fetch("/AddTutors", {
             method: "POST",
             headers: {
-                'content-type': "application/json"
+                'content-type': "application/json",
+                authorization: `Brerr ${token}`
             },
             body: JSON.stringify(Submit)
         })

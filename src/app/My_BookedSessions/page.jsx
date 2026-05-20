@@ -1,9 +1,18 @@
+import { headers } from "next/headers";
 import TableData from "../components/TableData/TableData";
 import { Table } from "@heroui/react";
+import { auth } from "@/lib/auth";
 
 
 const My_BookedSessions = async () => {
-    const data = await fetch("http://localhost:5000/Bookingall")
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/Bookingall`, {
+        headers: {
+            authorization: `Brerr ${token}`
+        }
+    })
     const results = await data.json()
 
     return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import {
     Button,
     FieldError,
@@ -21,17 +21,18 @@ export function BookingModal({ name }) {
     const [phone, setPhone] = useState("");
 
     const dataFromUser = async () => {
-
+        const { token } = authClient.token()
         const Submit = {
             userName: user?.name,
             userEmail: user?.email,
             TutorName: name,
             Phone: phone
         }
-        const result = await fetch("http://localhost:5000/Booking", {
+        const result = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/Booking`, {
             method: "POST",
             headers: {
-                'content-type': "application/json"
+                'content-type': "application/json",
+                authorization: `Brerr ${token}`
             },
             body: JSON.stringify(Submit)
         })

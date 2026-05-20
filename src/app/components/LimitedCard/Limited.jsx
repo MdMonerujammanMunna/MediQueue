@@ -1,10 +1,19 @@
 import { Button } from "@heroui/react";
 import CardPage from "../Card/Card";
 import Link from "next/link";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 
 const Limited = async () => {
-    const data = await fetch("http://localhost:5000/TutorsLimit")
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/TutorsLimit`, {
+        headers: {
+            authorization: `Brerr ${token}`
+        }
+    })
     const results = await data.json()
     return (
         <>

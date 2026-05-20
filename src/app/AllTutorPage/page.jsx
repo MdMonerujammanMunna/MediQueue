@@ -1,7 +1,16 @@
+import { headers } from "next/headers";
 import CardPage from "../components/Card/Card";
+import { auth } from "@/lib/auth";
 
 const AllTutorPage = async () => {
-    const data = await fetch("http://localhost:5000/Tutors")
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/Tutors`, {
+        headers: {
+            authorization: `Brerr ${token}`
+        }
+    })
     const results = await data.json()
     return (
         <>
