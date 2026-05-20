@@ -21,7 +21,7 @@ export default function Navbar() {
     const AfterLogin =
         <>
             <li><Link href="/AddToutorPage" className={`${pathName === "/AddToutorPage" ? "text-[var(--primary-color)]" : ""} no-underline`}>Add Tutor</Link></li>
-            <li><Link href="/My_Tutors" className={`${pathName === "/My_Tutors" ? "text-[var(--primary-color)]" : ""} no-underline`}>My Tutors</Link></li>
+            <li><Link href="/MyTutors" className={`${pathName === "/MyTutors" ? "text-[var(--primary-color)]" : ""} no-underline`}>My Tutors</Link></li>
             <li><Link href="/My_BookedSessions" className={`${pathName === "/My_BookedSessions" ? "text-[var(--primary-color)]" : ""} no-underline`}>My Booked Sessions</Link></li>
         </>
     const ButtonMid = <>

@@ -1,4 +1,5 @@
 "use client";
+import { useSession } from "@/lib/auth-client";
 import {
     Button,
     FieldError,
@@ -13,18 +14,38 @@ import {
     TextField,
 } from "@heroui/react";
 
-const localhost = process.env.LOCAL_HOST;
 export default function AddToutorPage() {
+    const { data, isPending } = useSession()
+    if (isPending) {
+        <h2>Loading...</h2>
+    }
+    const usero = data?.user;
     const OnsubmitHandele = async (e) => {
         e.preventDefault();
         const fromdata = new FormData(e.currentTarget)
         const user = Object.fromEntries(fromdata.entries())
+        const Submit = {
+            name: user?.name,
+            Photo: user?.Photo,
+            Times: user?.Times,
+            Fee: user?.Fee,
+            Slot: user?.Slot,
+            SessionDate: user?.SessionDate,
+            Subject: user?.Subject,
+            Institution: user?.Institution,
+            Experience: user?.Experience,
+            Location: user?.Location,
+            Teaching: user?.Teaching,
+            SessionUserID: usero?.id
+        }
+
+        console.log(Submit)
         const result = await fetch("http://localhost:5000/AddTutors", {
             method: "POST",
             headers: {
                 'content-type': "application/json"
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(Submit)
         })
     }
 
