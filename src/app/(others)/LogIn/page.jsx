@@ -59,13 +59,13 @@ const LogIn = () => {
                         {/* Email */}
                         <TextField name="Email" isRequired className={"space-y-2"}>
                             <Label className='text-[18px]'>Email Address</Label>
-                            <Input type='email' placeholder="Enter your email" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
+                            <Input type='email' placeholder="Enter your email" className="rounded-xl py-3 px-5 text-[18px]" variant="secondary" />
                             <FieldError />
                         </TextField>
                         {/* Password */}
                         <TextField name="Password" isRequired className={"space-y-2"}>
                             <Label className='text-[18px]'>Password</Label>
-                            <Input type='password' placeholder="Create a password" className="rounded-xl py-3 px-5 text-[18px] bg-[#F8FAFC]" />
+                            <Input type='password' placeholder="Enter your password" className="rounded-xl py-3 px-5 text-[18px]" variant="secondary" />
                             <FieldError />
                         </TextField>
 
