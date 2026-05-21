@@ -90,8 +90,8 @@ export default function Navbar() {
                     }
 
 
+                    <ToggleButton />
                     {/* <Providers>
-                        <ToggleButton />
                     </Providers> */}
                 </div>
             </header>
