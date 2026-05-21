@@ -21,8 +21,8 @@ const TableforMy = ({ item }) => {
                 }</Table.Cell>
                 <Table.Cell>
 
-                    <ModalUpadate></ModalUpadate>
-                    <DeletModal></DeletModal>
+                    <ModalUpadate item={item}></ModalUpadate>
+                    <DeletModal item={item}></DeletModal>
                 </Table.Cell>
             </Table.Row>
         </>

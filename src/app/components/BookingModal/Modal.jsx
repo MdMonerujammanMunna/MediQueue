@@ -32,7 +32,6 @@ export function BookingModal({ name }) {
             method: "POST",
             headers: {
                 'content-type': "application/json",
-                authorization: `Brerr ${token}`
             },
             body: JSON.stringify(Submit)
         })

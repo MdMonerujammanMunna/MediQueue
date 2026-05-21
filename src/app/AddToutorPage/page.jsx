@@ -13,8 +13,10 @@ import {
     TextArea,
     TextField,
 } from "@heroui/react";
+import { toast } from "react-toastify";
 
 export default function AddToutorPage() {
+
     const { data, isPending } = useSession()
     if (isPending) {
         <h2>Loading...</h2>
@@ -40,15 +42,18 @@ export default function AddToutorPage() {
             SessionUserID: usero?.id
         }
 
-        console.log(Submit)
-        const result = await fetch("/AddTutors", {
+        const result = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/AddTutors`, {
             method: "POST",
             headers: {
                 'content-type': "application/json",
-                authorization: `Brerr ${token}`
             },
             body: JSON.stringify(Submit)
         })
+        if (result.ok) {
+            toast.success("Tutor added successfully")
+        } else {
+            toast.error("Failed to add tutor")
+        }
     }
 
     return (

@@ -8,17 +8,16 @@ import Image from "next/image";
 
 const DetailsPage = async ({ params }) => {
     const { id } = await params
-    const { token } = await auth.api.getToken({
-        headers: await headers()
-    })
-    const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/AllTutorPage/${id}`, {
-        headers: {
-            authorization: `Brerr ${token}`
-        }
-    })
-    const results = await data.json()
+    let results = null;
+    try {
+        const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/AllTutorPage/${id}`)
+        results = await data.json()
+    } catch (err) {
+        console.error('Failed to fetch AllTutorPage details during prerender:', err)
+        return <div className="py-20 text-center">Tutor details are currently unavailable.</div>
+    }
 
-    const { _id, name, Photo, Subject, Times, SessionDate, Fee, slot, Experience, Location, Institution, Teaching } = results
+    const { _id, name, Photo, Subject, Times, SessionDate, Fee, slot, Experience, Location, Institution, Teaching } = results || {}
     return (
         <>
             <Card className="p-10 max-w-6xl  mx-auto my-20">

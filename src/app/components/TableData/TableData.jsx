@@ -5,7 +5,7 @@ import { Button } from "@heroui/react";
 import { useState } from "react";
 
 const TableData = ({ item }) => {
-    const [Cancle, setCancle] = useState("")
+    const [Cancle, setCancle] = useState("NO")
     const { userName, userEmail, TutorName, Phone } = item
     return (
         <>
