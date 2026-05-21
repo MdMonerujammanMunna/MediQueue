@@ -13,7 +13,7 @@ import { Modal } from "@heroui/react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-export function BookingModal({ name }) {
+export function BookingModal({ results }) {
     const { data, isPending } = useSession()
     if (isPending) {
         <h2>Loading...</h2>
@@ -22,11 +22,28 @@ export function BookingModal({ name }) {
     const [phone, setPhone] = useState("");
 
     const dataFromUser = async () => {
+        if (results.Slot > 0) {
+            const totalslot = results?.Slot - 1
+            const dataslot = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/AllTutorPage/${results?._id}`, {
+                method: "PATCH",
+                headers: {
+                    'content-type': "application/json",
+                },
+                body: JSON.stringify({ Slot: totalslot })
+            })
+
+        }
+        else {
+            return toast.error(`No slots available`, {
+                position: "top-center",
+            });
+
+        }
         const { token } = authClient.token()
         const Submit = {
             userName: user?.name,
             userEmail: user?.email,
-            TutorName: name,
+            TutorName: results?.name,
             Phone: phone
         }
         const result = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/Booking`, {
@@ -36,6 +53,7 @@ export function BookingModal({ name }) {
             },
             body: JSON.stringify(Submit)
         })
+
         if (result.ok) {
             toast.success(`Booking submitted successfully`, {
                 position: "top-center",
@@ -59,10 +77,9 @@ export function BookingModal({ name }) {
                 theme: "dark",
             });
         }
+
+
     }
-
-
-
     return (
         <Modal>
             <Button className={"bg-[var(--primary-color)] text-white"}>
@@ -107,7 +124,7 @@ export function BookingModal({ name }) {
                                         name="Tutor"
                                     >
                                         <Label>Tutor Name</Label>
-                                        <Input placeholder="Tutor Name" value={name} variant="secondary" />
+                                        <Input placeholder="Tutor Name" value={results?.name} variant="secondary" />
                                         <FieldError />
                                     </TextField>
                                     {/* Email section */}

@@ -4,29 +4,18 @@ import { IoLogoLinkedin } from 'react-icons/io';
 import { RiInstagramFill } from 'react-icons/ri';
 
 const Footersection = () => {
-    const AfterLogin =
-        <>
-            <li><Link href="#" className="no-underline hover:text-[var(--primary-color)] ">Add Tutor</Link></li>
-            <li><Link href="#" className="no-underline hover:text-[var(--primary-color)] ">My Tutors</Link></li>
-            <li><Link href="#" className="no-underline hover:text-[var(--primary-color)] ">My Booked Sessions</Link></li>
-        </>
     const Navigation =
         <>
-            <li><Link href="#" className="no-underline hover:text-[var(--primary-color)] ">Home</Link></li>
-            <li><Link href="#" className="no-underline hover:text-[var(--primary-color)] "> Tutors </Link></li>
-
-            {
-                // <>  </>                         {/*before log in */}
-                // :
-                <>
-                    {AfterLogin}                  {/* after log in */}
-                </>
-            }
+            <li><Link href="/" className="no-underline hover:text-[var(--primary-color)] ">Home</Link></li>
+            <li><Link href="/Tutors" className="no-underline hover:text-[var(--primary-color)] "> Tutors </Link></li>
+            <li><Link href="/AddTutor" className="no-underline hover:text-[var(--primary-color)] ">Add Tutor</Link></li>
+            <li><Link href="/MyTutors" className="no-underline hover:text-[var(--primary-color)] ">My Tutors</Link></li>
+            <li><Link href="/MyBookedSessions" className="no-underline hover:text-[var(--primary-color)] ">My Booked Sessions</Link></li>
         </>
     const Support =
         <>
             <li><Link href="/" className='hover:text-[var(--primary-color)]'>Help Center</Link></li>
-            <li><Link href="/All_tiles" className='hover:text-[var(--primary-color)]'>FAQ</Link></li>
+            <li><Link href="/FAQSection" className='hover:text-[var(--primary-color)]'>FAQ</Link></li>
             <li><Link href="/Profile" className='hover:text-[var(--primary-color)]'>Terms & Conditions</Link></li>
             <li><Link href="/Profile" className='hover:text-[var(--primary-color)]'>Privacy Policy</Link></li>
         </>

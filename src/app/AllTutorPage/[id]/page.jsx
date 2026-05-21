@@ -17,7 +17,7 @@ const DetailsPage = async ({ params }) => {
         return <div className="py-20 text-center">Tutor details are currently unavailable.</div>
     }
 
-    const { _id, name, Photo, Subject, Times, SessionDate, Fee, slot, Experience, Location, Institution, Teaching } = results || {}
+    const { _id, name, Photo, Subject, Times, SessionDate, Fee, Slot, Experience, Location, Institution, Teaching } = results || {}
     return (
         <>
             <Card className="p-10 max-w-6xl  mx-auto my-20">
@@ -44,10 +44,10 @@ const DetailsPage = async ({ params }) => {
                             <p className=" font-bold">Available and time slot: <span className="font-normal"> {Times}</span></p>
                         </div>
                         <p className=" font-bold">Hourly Fee: <span className=" font-normal">${Fee}/hr</span></p>
-                        <p className="font-bold">Remaining Slots: <span className="font-normal"> {slot}</span></p>
+                        <p className="font-bold">Remaining Slots: <span className="font-normal"> {Slot}</span></p>
                         <p className="font-bold">Session Start Date: <span className="font-normal"> {SessionDate}</span> </p>
 
-                        <BookingModal name={name}></BookingModal>
+                        <BookingModal results={results}></BookingModal>
 
                     </div>
                 </div>
