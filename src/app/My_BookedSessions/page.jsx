@@ -15,7 +15,7 @@ const My_BookedSessions = async () => {
     }
     return (
         <>
-            {results.length > 0 ? <>
+            {results?.length > 0 ? <>
                 <Table variant="secondary" className="py-10 px-10">
                     <Table.ScrollContainer>
                         <Table.Content aria-label="Team members" className="min-w-[600px]">
@@ -28,7 +28,7 @@ const My_BookedSessions = async () => {
                                 <Table.Column>Cancelle</Table.Column>
                             </Table.Header>
                             <Table.Body>
-                                {results.map((item, index) => <TableData key={index} item={item}></TableData>)}
+                                {results?.map((item, index) => <TableData key={index} item={item}></TableData>)}
                             </Table.Body>
                         </Table.Content>
                     </Table.ScrollContainer>

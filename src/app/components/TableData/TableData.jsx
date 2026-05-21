@@ -1,39 +1,53 @@
+
 "use client"
-import { Table } from "@heroui/react";
+import { Table, Button } from "@heroui/react";
 import { Xmark } from '@gravity-ui/icons';
-import { Button } from "@heroui/react";
+import { Check } from '@gravity-ui/icons';
 import { useState } from "react";
 
 const TableData = ({ item }) => {
-    const [Cancle, setCancle] = useState("NO")
-    const { userName, userEmail, TutorName, Phone } = item
+
+    const [cancel, setCancel] = useState(false);
+
+    const { userName, userEmail, TutorName, Phone } = item;
+
+    // toggle function
+    const handleToggle = () => {
+        setCancel(!cancel);
+    };
+
     return (
-        <>
+        <Table.Row>
+            <Table.Cell>{userName}</Table.Cell>
+            <Table.Cell>{Phone}</Table.Cell>
+            <Table.Cell>{TutorName}</Table.Cell>
+            <Table.Cell>{userEmail}</Table.Cell>
 
-            <Table.Row>
-                <Table.Cell>{userName}</Table.Cell>
-                <Table.Cell>{Phone}</Table.Cell>
-                <Table.Cell>{TutorName}</Table.Cell>
-                <Table.Cell>{userEmail}</Table.Cell>
-                <Table.Cell>
-                    {
-                        Cancle === "Cancle" ?
-                            <>
-                                <button className="text-red-500 rounded-full py-0.5 bg-red-200 px-1.5 font-medium">Cancelled</button>
+            <Table.Cell>
+                {
+                    cancel ? (
+                        <button className="text-red-500 rounded-full py-0.5 bg-red-200 px-2 font-medium">
+                            Cancelled
+                        </button>
+                    ) : (
+                        <button className="text-green-500 rounded-full py-0.5 bg-green-200 px-2 font-medium">
+                            Connected
+                        </button>
+                    )
+                }
+            </Table.Cell>
 
-                            </> :
-                            <>
-                                <button className="text-green-500 rounded-full py-0.5 bg-green-200 px-1.5 font-medium">Connected</button>
-                            </>
-                    }
-                </Table.Cell>
-                <Table.Cell>
-                    <Button onClick={() => setCancle("Cancle")} isIconOnly variant="danger">
-                        <Xmark />
-                    </Button>
-                </Table.Cell>
-            </Table.Row>
-        </>
+            <Table.Cell>
+                <Button
+                    className={cancel ? "bg-green-500" : "bg-red-500"}
+                    onClick={handleToggle}
+                    isIconOnly
+                    color={cancel ? "success" : "danger"}
+                >
+                    {cancel ? <Check /> : <Xmark />}
+                </Button>
+            </Table.Cell>
+        </Table.Row>
     );
 };
 

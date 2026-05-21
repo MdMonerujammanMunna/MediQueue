@@ -11,6 +11,7 @@ import {
 } from "@heroui/react";
 import { Modal } from "@heroui/react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export function BookingModal({ name }) {
     const { data, isPending } = useSession()
@@ -35,6 +36,29 @@ export function BookingModal({ name }) {
             },
             body: JSON.stringify(Submit)
         })
+        if (result.ok) {
+            toast.success(`Booking submitted successfully`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else {
+            toast.error(`Failed to submit booking`, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        }
     }
 
 
