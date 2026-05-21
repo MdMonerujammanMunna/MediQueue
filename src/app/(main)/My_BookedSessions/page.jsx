@@ -3,6 +3,10 @@ import TableData from "../components/TableData/TableData";
 import { Table } from "@heroui/react";
 import { auth } from "@/lib/auth";
 
+export const metadata = {
+    title: "My Booked Sessions",
+    description: "My Booked Sessions page for mediQueue",
+};
 
 const My_BookedSessions = async () => {
     let results = [];

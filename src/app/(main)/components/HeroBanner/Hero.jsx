@@ -9,9 +9,9 @@ import Link from "next/link";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 
-import img1 from '../../../../public/assets/banner1.png'
-import img2 from '../../../../public/assets/banner2.png'
-import img3 from '../../../../public/assets/banner3.png'
+import img1 from '../../../../../public/assets/banner1.png'
+import img2 from '../../../../../public/assets/banner2.png'
+import img3 from '../../../../../public/assets/banner3.png'
 
 
 export default function Hero() {

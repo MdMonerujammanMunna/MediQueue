@@ -139,7 +139,7 @@ export function BookingModal({ results }) {
                                 </Fieldset.Group>
                             </Fieldset>
                             <Modal.Footer className="grid grid-cols-5 mt-8">
-                                <Button onClick={dataFromUser} type="submit" slot="close" className={"col-span-4 w-full bg-[var(--primary-color)]"}>
+                                <Button onClick={dataFromUser} type="submit" slot="close" className={"col-span-4 w-full bg-[var(--primary-color)]"} >
                                     Confirm Booking
                                 </Button>
                                 <Button type="reset" variant="tertiary" className={"w-full"}>

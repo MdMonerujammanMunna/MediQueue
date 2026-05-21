@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { toast } from 'react-toastify';
 
+
 const LogIn = () => {
     const SubmitFrom = async (e) => {
         e.preventDefault()

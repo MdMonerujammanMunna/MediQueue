@@ -1,8 +1,9 @@
-import { BookingModal } from "@/app/components/BookingModal/Modal";
+
 import { auth } from "@/lib/auth";
 import { Button, Card } from "@heroui/react";
 import { headers } from "next/headers";
 import Image from "next/image";
+import { BookingModal } from "../../components/BookingModal/Modal";
 
 
 

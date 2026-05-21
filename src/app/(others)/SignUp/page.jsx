@@ -8,6 +8,10 @@ import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-toastify';
 
 
+export const metadata = {
+    title: "Sign Up",
+    description: "sign up page for mediQueue",
+};
 const SignUp = () => {
     const [Error, setError] = useState("");
     const SubmitFromtogo = async (e) => {

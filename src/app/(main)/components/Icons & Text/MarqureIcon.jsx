@@ -1,9 +1,9 @@
-import book from "../../../../public/Icons/book.png"
-import brain from "../../../../public/Icons/brain.png"
-import resourse from "../../../../public/Icons/resourse.png"
-import target from "../../../../public/Icons/target.png"
-import write from "../../../../public/Icons/write.png"
-import teacher from "../../../../public/Icons/teacher.png"
+import book from "../../../../../public/Icons/book.png"
+import brain from "../../../../../public/Icons/brain.png"
+import resourse from "../../../../../public/Icons/resourse.png"
+import target from "../../../../../public/Icons/target.png"
+import write from "../../../../../public/Icons/write.png"
+import teacher from "../../../../../public/Icons/teacher.png"
 import Image from "next/image"
 const MarqureIcon = () => {
     const AllData = [

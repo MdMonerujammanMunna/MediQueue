@@ -5,7 +5,10 @@ import { headers } from "next/headers";
 import TableData from "../components/TableData/TableData";
 import TableforMy from "../components/TableforMy/TableforMy";
 
-
+export const metadata = {
+    title: "My Tutors",
+    description: "My Tutors page for mediQueue",
+};
 const MyTutors = async () => {
 
     const session = await auth.api.getSession({
