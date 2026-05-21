@@ -3,7 +3,7 @@
 **MediQueue** is a modern and user-friendly tutor booking web application where students can easily register, log in, browse available tutors, and book online learning sessions based on subject and time availability.  
 The platform helps students manage their learning schedules efficiently by generating digital session tokens for every booking and preventing time-slot conflicts.
 
-🚀 **Live Demo:** [Click here](https://your-live-link.vercel.app)
+🚀 **Live Demo:** [Click here](https://medi-queue-psi-flame.vercel.app)
 
 ---
 
