@@ -1,5 +1,5 @@
 "use client";
-import { authClient, useSession } from "@/lib/auth-client";
+import { useSession } from "@/lib/auth-client";
 import {
     Button,
     FieldError,
@@ -12,11 +12,17 @@ import {
     ListBox,
     TextArea,
     TextField,
+    DateField,
 } from "@heroui/react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 
 export default function AddToutorPage() {
+    const [value, setValue] = useState(null);
+    const DateSeesion = new Date(value)
+        .toString()
+        .split("GMT")[0];
 
     const { data, isPending } = useSession()
     if (isPending) {
@@ -24,7 +30,6 @@ export default function AddToutorPage() {
     }
     const usero = data?.user;
     const OnsubmitHandele = async (e) => {
-        const { token } = authClient.token()
         e.preventDefault();
         const fromdata = new FormData(e.currentTarget)
         const user = Object.fromEntries(fromdata.entries())
@@ -34,7 +39,7 @@ export default function AddToutorPage() {
             Times: user?.Times,
             Fee: user?.Fee,
             Slot: user?.Slot,
-            SessionDate: user?.SessionDate,
+            SessionDate: DateSeesion,
             Subject: user?.Subject,
             Institution: user?.Institution,
             Experience: user?.Experience,
@@ -42,6 +47,7 @@ export default function AddToutorPage() {
             Teaching: user?.Teaching,
             SessionUserID: usero?.id
         }
+
 
         const result = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/AddTutors`, {
             method: "POST",
@@ -111,11 +117,12 @@ export default function AddToutorPage() {
 
                                 {/* SessionDate section */}
                                 <div className="">
-                                    <TextField name="SessionDate" type="date" isRequired>
-                                        <Label>Session Start Date</Label>
-                                        <Input type="date" className="rounded-2xl" variant="secondary" />
-                                        <FieldError />
-                                    </TextField>
+                                    <DateField className="w-full" name="date" value={value} onChange={setValue}>
+                                        <Label>Date</Label>
+                                        <DateField.Group>
+                                            <DateField.Input variant="secondary">{(segment) => <DateField.Segment segment={segment} />}</DateField.Input>
+                                        </DateField.Group>
+                                    </DateField>
                                 </div>
 
                                 {/* Subject section */}
@@ -135,11 +142,11 @@ export default function AddToutorPage() {
                                         <Select.Popover>
                                             <ListBox>
                                                 <ListBox.Item id="Bangla" textValue="Bangla">
-                                                    Bangl
+                                                    Bangla
                                                     <ListBox.ItemIndicator />
                                                 </ListBox.Item>
                                                 <ListBox.Item id="English" textValue="English">
-                                                    Englis
+                                                    English
                                                     <ListBox.ItemIndicator />
                                                 </ListBox.Item>
                                                 <ListBox.Item id="Mathematics" textValue="Mathematics">

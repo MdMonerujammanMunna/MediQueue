@@ -1,7 +1,8 @@
-import { headers } from "next/headers";
+
+import { auth } from "@/lib/auth";
 import TableData from "../components/TableData/TableData";
 import { Table } from "@heroui/react";
-import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export const metadata = {
     title: "My Booked Sessions",
@@ -9,9 +10,18 @@ export const metadata = {
 };
 
 const My_BookedSessions = async () => {
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
     let results = [];
     try {
-        const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/Bookingall`)
+        const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/Bookingall`, {
+            method: "GET",
+            headers: {
+                'content-type': "application/json",
+                authorization: `Bearer ${token}`
+            }
+        })
         results = await data.json()
     } catch (err) {
         console.error('Failed to fetch Bookingall during prerender:', err)

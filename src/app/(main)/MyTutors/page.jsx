@@ -10,7 +10,10 @@ export const metadata = {
     description: "My Tutors page for mediQueue",
 };
 const MyTutors = async () => {
-
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    // console.log(token)
     const session = await auth.api.getSession({
         headers: await headers()
     })
@@ -22,6 +25,7 @@ const MyTutors = async () => {
             headers: {
                 'content-type': "application/json",
                 'UserValidID': id,
+                authorization: `Bearer ${token}`
             }
         })
         results = await data.json()
@@ -30,31 +34,33 @@ const MyTutors = async () => {
         results = []
     }
     return (
-        <div className="py-10">
-            {results.length > 0 ?
-                <>
-                    <Table variant="secondary" className=" px-10">
-                        <Table.ScrollContainer>
-                            <Table.Content aria-label="Team members" className="min-w-[600px]">
-                                <Table.Header>
-                                    <Table.Column isRowHeader>Tutor Name</Table.Column>
-                                    <Table.Column>Subject</Table.Column>
-                                    <Table.Column>Available</Table.Column>
-                                    <Table.Column>Hourly Fee</Table.Column>
-                                    <Table.Column>Total slot</Table.Column>
-                                    <Table.Column>Date</Table.Column>
-                                    <Table.Column>Active</Table.Column>
-                                </Table.Header>
-                                <Table.Body>
-                                    {(results || []).map((item, index) => <TableforMy key={index} item={item}></TableforMy>)}
-                                </Table.Body>
-                            </Table.Content>
-                        </Table.ScrollContainer>
-                    </Table>
-                </>
-                : <h1 className=" text-center font-bold text-[var(--primary-color)] text-4xl py-20" >No data Found here</h1>}
+        <div className="py-10" >
+            {
+                results.length > 0 ?
+                    <>
+                        <Table variant="secondary" className=" px-10">
+                            <Table.ScrollContainer>
+                                <Table.Content aria-label="Team members" className="min-w-[600px]">
+                                    <Table.Header>
+                                        <Table.Column isRowHeader>Tutor Name</Table.Column>
+                                        <Table.Column>Subject</Table.Column>
+                                        <Table.Column>Available</Table.Column>
+                                        <Table.Column>Hourly Fee</Table.Column>
+                                        <Table.Column>Total slot</Table.Column>
+                                        <Table.Column>Date</Table.Column>
+                                        <Table.Column>Active</Table.Column>
+                                    </Table.Header>
+                                    <Table.Body>
+                                        {(results || []).map((item, index) => <TableforMy key={index} item={item}></TableforMy>)}
+                                    </Table.Body>
+                                </Table.Content>
+                            </Table.ScrollContainer>
+                        </Table>
+                    </>
+                    : <h1 className=" text-center font-bold text-[var(--primary-color)] text-4xl py-20" >No data Found here</h1>
+            }
 
-        </div>
+        </div >
     );
 };
 
