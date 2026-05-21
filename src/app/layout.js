@@ -1,21 +1,17 @@
 const dns = require("node:dns");
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
-import { Geist, Geist_Mono } from "next/font/google";
+import { Comfortaa } from "next/font/google";
 import "./globals.css";
 
 import { ToastContainer } from "react-toastify";
 import { Providers } from "@/Provider/ThemeToggle";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const comfortaa = Comfortaa({
+  variable: "--font-comfortaa",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "MediQueue",
@@ -27,7 +23,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${comfortaa.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground container mx-auto">
         <ToastContainer />
