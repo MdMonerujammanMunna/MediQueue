@@ -98,7 +98,7 @@ The system removes manual scheduling problems, avoids booking conflicts, and ens
 - **Express.js**
 - **Node.js**
 - **React Fast Marquee**
-- **Vercel** *(Frontend Deployment)*
+- **Vercel** 
 
 ---
 
