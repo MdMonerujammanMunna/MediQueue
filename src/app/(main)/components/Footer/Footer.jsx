@@ -7,17 +7,17 @@ const Footersection = () => {
     const Navigation =
         <>
             <li><Link href="/" className="no-underline hover:text-[var(--primary-color)] ">Home</Link></li>
-            <li><Link href="/Tutors" className="no-underline hover:text-[var(--primary-color)] "> Tutors </Link></li>
-            <li><Link href="/AddTutor" className="no-underline hover:text-[var(--primary-color)] ">Add Tutor</Link></li>
+            <li><Link href="/AllTutorPage" className="no-underline hover:text-[var(--primary-color)] "> Tutors </Link></li>
+            <li><Link href="/AddToutorPage" className="no-underline hover:text-[var(--primary-color)] ">Add Tutor</Link></li>
             <li><Link href="/MyTutors" className="no-underline hover:text-[var(--primary-color)] ">My Tutors</Link></li>
-            <li><Link href="/MyBookedSessions" className="no-underline hover:text-[var(--primary-color)] ">My Booked Sessions</Link></li>
+            <li><Link href="/My_BookedSessions" className="no-underline hover:text-[var(--primary-color)] ">My Booked Sessions</Link></li>
         </>
     const Support =
         <>
             <li><Link href="/" className='hover:text-[var(--primary-color)]'>Help Center</Link></li>
-            <li><Link href="/FAQSection" className='hover:text-[var(--primary-color)]'>FAQ</Link></li>
-            <li><Link href="/Profile" className='hover:text-[var(--primary-color)]'>Terms & Conditions</Link></li>
-            <li><Link href="/Profile" className='hover:text-[var(--primary-color)]'>Privacy Policy</Link></li>
+            <li><Link href="/FAQ" className='hover:text-[var(--primary-color)]'>FAQ</Link></li>
+            <li><Link href="/" className='hover:text-[var(--primary-color)]'>Terms & Conditions</Link></li>
+            <li><Link href="/" className='hover:text-[var(--primary-color)]'>Privacy Policy</Link></li>
         </>
     const Info =
         <>

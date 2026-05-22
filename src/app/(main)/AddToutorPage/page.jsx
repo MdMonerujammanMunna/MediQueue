@@ -104,13 +104,13 @@ export default function AddToutorPage() {
                                     {/* Fee section */}
                                     <TextField className={"flex-1"} isRequired name="Fee" type="number">
                                         <Label>Hourly fee</Label>
-                                        <Input placeholder="$75" variant="secondary" type="number" />
+                                        <Input placeholder="Amount you want to charge" variant="secondary" type="number" />
                                         <FieldError />
                                     </TextField>
                                     {/* Slot section*/}
                                     <TextField className={"flex-1"} isRequired name="Slot" type="number">
                                         <Label>Total slot</Label>
-                                        <Input placeholder="100" variant="secondary" type="number" />
+                                        <Input placeholder="Total number of slots available" variant="secondary" type="number" />
                                         <FieldError />
                                     </TextField>
                                 </div>
@@ -120,7 +120,9 @@ export default function AddToutorPage() {
                                     <DateField className="w-full" name="date" value={value} onChange={setValue}>
                                         <Label>Date</Label>
                                         <DateField.Group>
-                                            <DateField.Input variant="secondary">{(segment) => <DateField.Segment segment={segment} />}</DateField.Input>
+                                            <DateField.Input className="bg-[#ebebec] text-[#747b8c] dark:bg-[#27272a] dark:text-[#e2e8f0]">
+                                                {(segment) => <DateField.Segment segment={segment} />}
+                                            </DateField.Input>
                                         </DateField.Group>
                                     </DateField>
                                 </div>
@@ -131,7 +133,7 @@ export default function AddToutorPage() {
                                         name="Subject"
                                         isRequired
                                         className="w-full"
-                                        placeholder="Select Subject"
+                                        placeholder="Select Subject to Teach"
                                         variant="secondary"
                                     >
                                         <Label>Subject / Category</Label>
@@ -180,7 +182,7 @@ export default function AddToutorPage() {
                                     name="Institution"
                                 >
                                     <Label>Institution Name</Label>
-                                    <Input placeholder="Dahaka something" variant="secondary" />
+                                    <Input placeholder="Institution Name" variant="secondary" />
                                     <FieldError />
                                 </TextField>
 
@@ -190,7 +192,7 @@ export default function AddToutorPage() {
                                     name="Experience"
                                 >
                                     <Label>Experience</Label>
-                                    <TextArea placeholder="3 years Experience" variant="secondary" />
+                                    <TextArea placeholder="Describe your Teaching experience" variant="secondary" />
                                     <FieldError />
                                 </TextField>
 
@@ -200,7 +202,7 @@ export default function AddToutorPage() {
                                     name="Location"
                                 >
                                     <Label>Location (Area/City)</Label>
-                                    <Input placeholder="Rangpur" variant="secondary" />
+                                    <Input placeholder="Enter your location" variant="secondary" />
                                     <FieldError />
                                 </TextField>
 

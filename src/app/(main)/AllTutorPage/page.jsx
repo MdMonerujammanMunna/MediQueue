@@ -28,7 +28,7 @@ const AllTutorPage = () => {
         fetchTutors();
     }, []);
 
-    console.log(results);
+    // console.log(results);
 
     return (
         <div className="py-10">
@@ -37,7 +37,55 @@ const AllTutorPage = () => {
                     All Tutor Section
                 </h1>
             </div>
+            {/* Search fild start */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end px-10 mb-5">
 
+                {/* Search */}
+                <div className="flex flex-col gap-1">
+                    <label className="text-sm font-medium">
+                        Search Tutor
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="Search tutor by name..."
+                        className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:ring-2 focus:ring-black"
+                    />
+                </div>
+
+                {/* Start Date */}
+                <div className="flex flex-col gap-1">
+                    <label className="text-sm font-medium">
+                        Start Date
+                    </label>
+
+                    <input
+                        type="date"
+                        className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:ring-2 focus:ring-black"
+                    />
+                </div>
+
+                {/* End Date */}
+                <div className="flex flex-col gap-1">
+                    <label className="text-sm font-medium">
+                        End Date
+                    </label>
+
+                    <input
+                        type="date"
+                        className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:ring-2 focus:ring-black"
+                    />
+                </div>
+
+                {/* Reset Button */}
+                <button
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3"
+                >
+                    Reset Filters
+                </button>
+
+            </div>
+            {/* Search fild end */}
             <div className="grid lg:grid-cols-3 gap-5 px-10">
                 {results.map((item, index) => (
                     <CardPage key={index} item={item} />
