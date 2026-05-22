@@ -22,13 +22,13 @@ export default function Error({
                 <div className="flex gap-4 justify-center mt-6">
                     <button
                         onClick={() => reset()}
-                        className="bg-black text-white px-5 py-2 rounded-xl hover:bg-gray-800 transition"
+                        className="bg-black text-white px-5 py-2 rounded-xl"
                     >
                         Try Again
                     </button>
 
                     <Link href="/">
-                        <button className="border border-black px-5 py-2 rounded-xl hover:bg-black hover:text-white transition">
+                        <button className="border  px-5 py-2 rounded-xl bg-black text-white ">
                             Go Home
                         </button>
                     </Link>

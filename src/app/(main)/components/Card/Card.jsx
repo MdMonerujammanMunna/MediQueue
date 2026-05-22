@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Button, Card } from "@heroui/react";
 import Link from "next/link";
 const CardPage = ({ item }) => {
-    const { name, Subject, Times, SessionDate, Fee, Photo, _id } = item
+    const { name, Subject, Times, SessionDate, Fee, Photo, _id, Slot } = item
 
     return (
         <>
@@ -23,19 +23,20 @@ const CardPage = ({ item }) => {
                         {name}
                     </h2>
 
-                    <p className="text-xl text-gray-500 mt-2">
+                    <p className="text-xl text-gray-500 mt-2 font-bold">
                         {Subject}
                     </p>
-                    <p className="text-xl  mt-2 text-gray-800">
-                        Available: <span>{Times}</span>
+                    <p className="text-xl  mt-2 text-gray-800 font-medium">
+                        Available: <span className="font-normal">{Times}</span>
                     </p>
-                    <p className="text-xl  mt-2 text-gray-800">
-                        Session Start Date: <span>{SessionDate}</span>
+                    <p className="text-xl  mt-2 text-gray-800 font-medium">
+                        Session Start Date: <span className="font-normal">{SessionDate}</span>
                     </p>
 
                     <div className=" space-y-6 mt-4 text-gray-800">
-                        <div className="font-bold ">
-                            <p>Fee: <span>${Fee}/hr</span></p>
+                        <div className="font-bold flex items-center justify-between gap-4">
+                            <p>Fee: <span>${Fee}<span className="font-normal text-xs">/hr</span></span></p>
+                            <p>Slot: <span className="font-normal">{Slot}</span></p>
                         </div>
                         <Link href={`/AllTutorPage/${_id}`}>
                             <Button className=" bg-[var(--primary-color)] text-white px-5 py-2 w-full rounded-full font-medium ">

@@ -8,7 +8,9 @@ import { headers } from "next/headers";
 const Limited = async () => {
     let results = [];
     try {
-        const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/TutorsLimit`)
+        const data = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/TutorsLimit`, {
+            cache: 'no-store'
+        })
         results = await data.json()
     } catch (err) {
         console.error('Failed to fetch TutorsLimit during prerender:', err)
